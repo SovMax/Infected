@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class stats : MonoBehaviour
+public class Stats : MonoBehaviour
 {
     private static float health;
     private static float hunger;
@@ -27,6 +27,26 @@ public class stats : MonoBehaviour
     public static float getMind()
     {
         return mind;
+    }
+
+    public static float setHealth(float inputValues)
+    {
+        return health = inputValues;
+    }
+
+    public static float setHunger(float inputValues)
+    {
+        return hunger = inputValues;
+    }
+
+    public static float setThirst(float inputValues)
+    {
+        return thirst = inputValues;
+    }
+
+    public static float setMind(float inputValues)
+    {
+        return mind = inputValues;
     }
 
     void Start() { }
