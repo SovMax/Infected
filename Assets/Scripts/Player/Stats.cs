@@ -9,44 +9,25 @@ public class Stats : MonoBehaviour
     private static float thirst;
     private static float mind;
 
-    public static float getHealth()
+    public static float Health
     {
-        return health;
+        get { return health; }
+        set { health = value; }
     }
-
-    public static float getHunger()
+    public static float Hunger
     {
-        return hunger;
+        get { return hunger; }
+        set { hunger = value; }
     }
-
-    public static float getThirst()
+    public static float Thirst
     {
-        return thirst;
+        get { return thirst; }
+        set { thirst = value; }
     }
-
-    public static float getMind()
+    public static float Mind
     {
-        return mind;
-    }
-
-    public static float setHealth(float inputValues)
-    {
-        return health = inputValues;
-    }
-
-    public static float setHunger(float inputValues)
-    {
-        return hunger = inputValues;
-    }
-
-    public static float setThirst(float inputValues)
-    {
-        return thirst = inputValues;
-    }
-
-    public static float setMind(float inputValues)
-    {
-        return mind = inputValues;
+        get { return mind; }
+        set { mind = value; }
     }
 
     void Start() { }

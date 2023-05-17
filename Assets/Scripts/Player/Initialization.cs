@@ -31,10 +31,10 @@ public class Initialization : MonoBehaviour
 
     public static void getStartValues()
     {
-        Stats.setHealth(getDefailtQuantityHealth());
-        Stats.setHunger(getDefailtQuantityHunger());
-        Stats.setThirst(getDefailtQuantityThirst());
-        Stats.setMind(getDefailtQuantityMind());
+        Stats.Health = getDefailtQuantityHealth();
+        Stats.Hunger = getDefailtQuantityHunger();
+        Stats.Thirst = getDefailtQuantityThirst();
+        Stats.Mind = getDefailtQuantityMind();
     }
 
     // Start is called before the first frame update
