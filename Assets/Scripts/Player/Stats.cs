@@ -4,33 +4,13 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
-    private static float health;
-    private static float hunger;
-    private static float thirst;
-    private static float mind;
+    public static float Health { get; set; }
+    public static float Hunger { get; set; }
+    public static float Thirst { get; set; }
+    public static float Mind { get; set; }
 
-    public static float Health
-    {
-        get { return health; }
-        set { health = value; }
-    }
-    public static float Hunger
-    {
-        get { return hunger; }
-        set { hunger = value; }
-    }
-    public static float Thirst
-    {
-        get { return thirst; }
-        set { thirst = value; }
-    }
-    public static float Mind
-    {
-        get { return mind; }
-        set { mind = value; }
-    }
-
-    void Start() { }
-
-    void Update() { }
+    public static float DefaulQuantityHealth { get; set; } = 2000;
+    public static float DefaulQuantityHunger { get; set; } = 3000;
+    public static float DefaulQuantityThirst { get; set; } = 4000;
+    public static float DefaulQuantityMind { get; set; } = 5000;
 }
