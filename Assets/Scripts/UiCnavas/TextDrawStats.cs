@@ -48,10 +48,8 @@ public class TextDrawStats : MonoBehaviour
         changeText(findObjOnPath(uiCanvasPath, getObjName(3)), Stats.Mind);
     }
 
-    // Start is called before the first frame update
     void Start() { }
 
-    // Update is called once per frame
     void Update()
     {
         changeStatsText();

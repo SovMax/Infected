@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fef21970a1207ef42ab0f6675b30bd17
+guid: eb45f6f6a4072d145b4b1ee640dc67f4
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Annie Use Your Telescope
+  - Caveat
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
