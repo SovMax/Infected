@@ -13,16 +13,6 @@ public class Stats : MonoBehaviour
     public static float DefaulQuantityHunger { get; set; } = 3000;
     public static float DefaulQuantityThirst { get; set; } = 4000;
     public static float DefaulQuantityMind { get; set; } = 5000;
-}
 
-public class Inventory
-{
-    private static List<item> inventory = new List<item> { };
-
-    public static void addItemList(string tittle, float hpp)
-    {
-        int length = inventory.Count;
-        inventory.Add(new Food());
-        inventory[length].hp = hpp;
-    }
+    public static List<Item> inventory = new List<Item> { };
 }

@@ -2,39 +2,102 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class item
+public class Item
 {
-    public static string title { get; set; }
-    public float hp { get; set; }
+    public string title { get; set; }
+    public float durability { get; set; }
 }
 
-public class Food : item
+public class Food : Item
 {
-    public static float increaceHunger { get; set; }
-    public static float increaceThirst { get; set; }
+    public float increaceHunger { get; set; }
+    public float increaceThirst { get; set; }
 }
 
-public class MidKit : item
+public class MidKit : Item
 {
-    public static float increaceMind { get; set; }
-    public static float increaceHp { get; set; }
+    public float increaceMind { get; set; }
+    public float increaceHealth { get; set; }
 
-    private static string[] effects = new string[] { };
+    private string[] effects = new string[] { };
 
-    public static string getEffect(int index)
+    public string getEffect(int index)
     {
         return effects[index];
     }
 
-    public static void setEffect(int index, string inputEffect)
+    public void setEffect(int index, string inputEffect)
     {
         effects[index] = inputEffect;
     }
+
+    public void setAllEffects(string[] inputArray)
+    {
+        effects = inputArray;
+    }
 }
 
-public class Weapon : item
+public class Weapon : Item
 {
-    public static float damage { get; set; }
+    public float damage { get; set; }
 }
 
-public class Other : item { }
+public class Inventory
+{ //Переделать механику добавления и хранения предметов в двумерный массив
+    public static void addItemList(string title, float durability)
+    {
+        int length = Stats.inventory.Count;
+        Stats.inventory.Add(new Item());
+        Stats.inventory[length].title = title;
+        Stats.inventory[length].durability = durability;
+    }
+
+    public static void addFoodList(
+        string title,
+        float durability,
+        float increaceHunger,
+        float increaceThirst
+    )
+    {
+        int length = Stats.inventory.Count;
+        Food tempVariable = new Food();
+        tempVariable.title = title;
+        tempVariable.durability = durability;
+        tempVariable.increaceHunger = increaceHunger;
+        tempVariable.increaceThirst = increaceThirst;
+        Stats.inventory.Add(tempVariable);
+    }
+
+    public static void addMidkitList(
+        string title,
+        float durability,
+        float increaceMind,
+        float increaceHealth,
+        string[] effects
+    )
+    {
+        int length = Stats.inventory.Count;
+        MidKit tempVariable = new MidKit();
+        tempVariable.title = title;
+        tempVariable.durability = durability;
+        tempVariable.increaceMind = increaceMind;
+        tempVariable.increaceHealth = increaceHealth;
+        tempVariable.setAllEffects(effects);
+        Stats.inventory.Add(tempVariable);
+    }
+
+    public static void addWeaponList(string title, float durability, float damage)
+    {
+        int length = Stats.inventory.Count;
+        Weapon tempVariable = new Weapon();
+        tempVariable.title = title;
+        tempVariable.durability = durability;
+        tempVariable.damage = damage;
+        Stats.inventory.Add(tempVariable);
+    }
+
+    public static Item getItemList(int index)
+    {
+        return Stats.inventory[index];
+    }
+}
