@@ -6,18 +6,30 @@ public class Item
 {
     public string title { get; set; }
     public float durability { get; set; }
+
+    public void setTitleDurability(string title, float durability)
+    {
+        this.title = title;
+        this.durability = durability;
+    }
 }
 
 public class Food : Item
 {
-    public float increaceHunger { get; set; }
-    public float increaceThirst { get; set; }
+    public float Hunger { get; set; }
+    public float Thirst { get; set; }
+
+    public void setHungerThirst(float hunger, float thirst)
+    {
+        this.Hunger = hunger;
+        this.Thirst = thirst;
+    }
 }
 
 public class MidKit : Item
 {
-    public float increaceMind { get; set; }
-    public float increaceHealth { get; set; }
+    public float Mind { get; set; }
+    public float Health { get; set; }
 
     private string[] effects = new string[] { };
 
@@ -35,69 +47,91 @@ public class MidKit : Item
     {
         effects = inputArray;
     }
+
+    public void setMindHealth(float mind, float health)
+    {
+        this.Mind = mind;
+        this.Health = health;
+    }
 }
 
 public class Weapon : Item
 {
     public float damage { get; set; }
+
+    public void setDamage(float damage)
+    {
+        this.damage = damage;
+    }
 }
 
 public class Inventory
-{ //Переделать механику добавления и хранения предметов в двумерный массив
-    public static void addItemList(string title, float durability)
+{
+    public static int getLengthList()
     {
-        int length = Stats.inventory.Count;
-        Stats.inventory.Add(new Item());
-        Stats.inventory[length].title = title;
-        Stats.inventory[length].durability = durability;
+        return Stats.inventory.Count;
     }
 
-    public static void addFoodList(
-        string title,
-        float durability,
-        float increaceHunger,
-        float increaceThirst
-    )
+    public static void addItemList(string title, float durability)
     {
-        int length = Stats.inventory.Count;
+        Item tempVariable = new Item();
+        tempVariable.setTitleDurability(title, durability);
+        Stats.inventory.Add(tempVariable);
+    }
+
+    public static void addFoodList(string title, float durability, float hunger, float thirst)
+    {
         Food tempVariable = new Food();
-        tempVariable.title = title;
-        tempVariable.durability = durability;
-        tempVariable.increaceHunger = increaceHunger;
-        tempVariable.increaceThirst = increaceThirst;
+        tempVariable.setTitleDurability(title, durability);
+        tempVariable.setHungerThirst(hunger, thirst);
         Stats.inventory.Add(tempVariable);
     }
 
     public static void addMidkitList(
         string title,
         float durability,
-        float increaceMind,
-        float increaceHealth,
+        float mind,
+        float health,
         string[] effects
     )
     {
-        int length = Stats.inventory.Count;
         MidKit tempVariable = new MidKit();
-        tempVariable.title = title;
-        tempVariable.durability = durability;
-        tempVariable.increaceMind = increaceMind;
-        tempVariable.increaceHealth = increaceHealth;
+        tempVariable.setTitleDurability(title, durability);
+        tempVariable.setMindHealth(mind, health);
         tempVariable.setAllEffects(effects);
         Stats.inventory.Add(tempVariable);
     }
 
     public static void addWeaponList(string title, float durability, float damage)
     {
-        int length = Stats.inventory.Count;
         Weapon tempVariable = new Weapon();
-        tempVariable.title = title;
-        tempVariable.durability = durability;
-        tempVariable.damage = damage;
+        tempVariable.setTitleDurability(title, durability);
+        tempVariable.setDamage(damage);
         Stats.inventory.Add(tempVariable);
     }
 
     public static Item getItemList(int index)
     {
         return Stats.inventory[index];
+    }
+
+    public static Item getItemTypeList(Item inputItemType)
+    {
+        bool tmepVariable = false;
+        for (int i = 0; i < getLengthList(); i++)
+        {
+            if (getItemList(i).GetType() == inputItemType.GetType())
+            {
+                tmepVariable = true;
+            }
+        }
+        if (tmepVariable == true)
+        {
+            return inputItemType;
+        }
+        else
+        {
+            return null;
+        }
     }
 }
